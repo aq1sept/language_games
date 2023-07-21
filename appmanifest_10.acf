@@ -1,0 +1,52 @@
+"AppState"
+{
+	"appid"		"10"
+	"Universe"		"1"
+	"LauncherPath"		"C:\\Program Files (x86)\\Steam\\steam.exe"
+	"name"		"Counter-Strike"
+	"StateFlags"		"4"
+	"installdir"		"Half-Life"
+	"LastUpdated"		"1689682896"
+	"SizeOnDisk"		"319075631"
+	"StagingSize"		"0"
+	"buildid"		"5424799"
+	"LastOwner"		"76561198930651749"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"0"
+	"BytesDownloaded"		"0"
+	"BytesToStage"		"0"
+	"BytesStaged"		"0"
+	"TargetBuildID"		"5424799"
+	"AutoUpdateBehavior"		"0"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+		"11"
+		{
+			"manifest"		"4720911300072406946"
+			"size"		"292616113"
+		}
+		"95"
+		{
+			"manifest"		"7685864384078520360"
+			"size"		"26459518"
+		}
+	}
+	"SharedDepots"
+	{
+		"1"		"70"
+		"3"		"70"
+		"2"		"70"
+	}
+	"UserConfig"
+	{
+		"BetaKey"		"public"
+		"language"		"ukranian"
+	}
+	"MountedConfig"
+	{
+		"BetaKey"		"public"
+		"language"		"english"
+	}
+}

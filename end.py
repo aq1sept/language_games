@@ -1,33 +1,37 @@
 import os
-import datetime
+import re
+import glob
 
-manifest_folder = "C:\\Program Files (x86)\\Steam\\steamapps"
-log_file = "end_log.txt"
+def extract_user_language(filename):
+    with open(filename, 'r') as file:
+        data = file.read()
 
-with open(log_file, "a") as log:
-    log.write(f"--- Log started: {datetime.datetime.now()} ---\n")
+    user_config_match = re.search(r'"UserConfig"\s*{(.+?)\s*}', data, re.DOTALL)
 
-    for file_name in os.listdir(manifest_folder):
-        if file_name.startswith("appmanifest_") and file_name.endswith(".acf"):
-            file_path = os.path.join(manifest_folder, file_name)
+    if user_config_match:
+        user_config_block = user_config_match.group(1)
 
-            try:
-                with open(file_path, "r") as file:
-                    manifest_lines = file.readlines()
+        language_match = re.search(r'"language"\s+"([^"]+)"', user_config_block)
 
-                updated_lines = []
-                for line in manifest_lines:
-                    if line.strip().startswith("\"language\""):
-                        line = line.split("\"")[3]
-                        if line.lower() != "english":
-                            updated_lines.append(line)
-                        break
+        if language_match:
+            user_language = language_match.group(1)
+            return user_language
+        else:
+            print("Language not found in UserConfig block.")
+            return None
+    else:
+        print("UserConfig block not found in the file.")
+        return None
 
-                if updated_lines:
-                    with open("user_language.cfg", "w") as config_file:
-                        config_file.write(updated_lines[0])
+steamapps_path = r"C:\Program Files (x86)\Steam\steamapps"
 
-            except FileNotFoundError as e:
-                log.write(f"File not found: {file_path}\n")
+for filename in glob.glob(os.path.join(steamapps_path, "appmanifest_*.acf")):
+    user_language = extract_user_language(filename)
 
-    log.write(f"--- Log ended: {datetime.datetime.now()} ---\n")
+    if user_language and user_language.lower() != "english":
+        with open("user_language.cfg", 'w') as output_file:
+            output_file.write(user_language)
+            print(f"User language '{user_language}' has been written to user_language.cfg.")
+        break
+    else:
+        print(f"File: {filename}, User language is 'english', ignoring the writing to user_language.cfg.")

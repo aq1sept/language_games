@@ -2,6 +2,7 @@ import os
 import re
 import sys
 import datetime
+import acf
 
 folder_path = "C:\\Program Files (x86)\\Steam\\steamapps"
 config_file_path = "user_language.cfg"

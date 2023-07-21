@@ -4,18 +4,15 @@ import sys
 import datetime
 
 folder_path = "C:\\Program Files (x86)\\Steam\\steamapps"
-config_file_path = "config.txt"
+config_file_path = "user_language.cfg"
 log_file_path = "start_log.txt"
 
 if not os.path.isfile(config_file_path):
-    # Create config.txt file
     with open(config_file_path, "w") as config_file:
         config_file.write("english")
 
-# Open log file in append mode
 log_file = open(log_file_path, "a")
 
-# Redirect stdout to the log file
 original_stdout = sys.stdout
 sys.stdout = log_file
 
@@ -45,6 +42,5 @@ for filename in os.listdir(folder_path):
         except FileNotFoundError:
             log_with_timestamp(f"File {filename} not found. Skipping.")
 
-# Restore stdout and close the log file
 sys.stdout = original_stdout
 log_file.close()

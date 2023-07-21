@@ -1,4 +1,6 @@
+import os
 import re
+import glob
 
 def extract_user_language(filename):
     with open(filename, 'r') as file:
@@ -21,13 +23,15 @@ def extract_user_language(filename):
         print("UserConfig block not found in the file.")
         return None
 
-if __name__ == "__main__":
-    filename = "appmanifest_10.acf"
+steamapps_path = r"C:\Program Files (x86)\Steam\steamapps"
+
+for filename in glob.glob(os.path.join(steamapps_path, "appmanifest_*.acf")):
     user_language = extract_user_language(filename)
-    
+
     if user_language and user_language.lower() != "english":
         with open("user_language.cfg", 'w') as output_file:
             output_file.write(user_language)
             print(f"User language '{user_language}' has been written to user_language.cfg.")
+        break
     else:
-        print("User language is 'english', ignoring the writing to user_language.cfg.")
+        print(f"File: {filename}, User language is 'english', ignoring the writing to user_language.cfg.")

@@ -24,8 +24,19 @@ def extract_user_language(filename):
         return None
 
 steamapps_path = r"C:\Program Files (x86)\Steam\steamapps"
+#steamapps_path = r"C:\Users\admin\Desktop\git\language_games\steamapps" FOR TESTING
+blacklist_file = "blacklist_appmanifest.cfg"
+
+blacklist = []
+if os.path.exists(blacklist_file):
+    with open(blacklist_file, 'r') as blacklist_file:
+        blacklist = [line.strip() for line in blacklist_file]
 
 for filename in glob.glob(os.path.join(steamapps_path, "appmanifest_*.acf")):
+    if os.path.basename(filename) in blacklist:
+        print(f"File: {filename} is in the blacklist, skipping.")
+        continue
+
     user_language = extract_user_language(filename)
 
     if user_language and user_language.lower() != "english":

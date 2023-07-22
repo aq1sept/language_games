@@ -24,8 +24,8 @@ def extract_user_language(filename):
         print("UserConfig block not found in the file.")
         return None
 
-steamapps_path = r"C:\Users\admin\Desktop\git\language_games\steamapps_test"
-# steamapps_path = r"C:\Program Files (x86)\Steam\steamapps"
+#steamapps_path = r"C:\Users\admin\Desktop\git\language_games\steamapps_test"
+steamapps_path = r"C:\Program Files (x86)\Steam\steamapps"
 blacklist_file = "blacklist_appmanifest.cfg"
 
 blacklist = []

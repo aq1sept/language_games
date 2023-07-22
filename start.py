@@ -2,8 +2,8 @@
 import os
 import re
 
-folder_path = r"C:\Users\admin\Desktop\git\language_games\steamapps_test"
-#folder_path = "C:\\Program Files (x86)\\Steam\\steamapps"
+#folder_path = r"C:\Users\admin\Desktop\git\language_games\steamapps_test"
+folder_path = "C:\\Program Files (x86)\\Steam\\steamapps"
 config_file_path = "user_language.cfg"
 blacklist_file_path = "blacklist_appmanifest.cfg"
 

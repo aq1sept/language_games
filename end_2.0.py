@@ -25,7 +25,7 @@ def extract_user_language(filename):
         return None
 
 steamapps_path = r"C:\Program Files (x86)\Steam\steamapps"
-#steamapps_path = r"C:\Users\admin\Desktop\git\language_games\steamapps" FOR TESTING
+#steamapps_path = r"C:\Users\admin\Desktop\git\language_games\steamapps_test" FOR TESTING
 blacklist_file = "blacklist_appmanifest.cfg"
 
 blacklist = []

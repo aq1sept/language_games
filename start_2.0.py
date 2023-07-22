@@ -1,3 +1,4 @@
+# VERSION: 2.0
 import os
 import re
 import sys

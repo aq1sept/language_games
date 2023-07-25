@@ -1,0 +1,75 @@
+"AppState"
+{
+	"appid"		"1135300"
+	"Universe"		"1"
+	"LauncherPath"		"C:\\Program Files (x86)\\Steam\\steam.exe"
+	"name"		"King's Bounty II"
+	"StateFlags"		"4"
+	"installdir"		"King's Bounty II"
+	"LastUpdated"		"1645128238"
+	"SizeOnDisk"		"22233898208"
+	"StagingSize"		"0"
+	"buildid"		"8178363"
+	"LastOwner"		"76561199459883367"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"722176880"
+	"BytesDownloaded"		"722176880"
+	"BytesToStage"		"743677654"
+	"BytesStaged"		"743677654"
+	"TargetBuildID"		"8178363"
+	"AutoUpdateBehavior"		"0"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+		"1135301"
+		{
+			"manifest"		"3565048292447488550"
+			"size"		"21248749531"
+		}
+		"1135302"
+		{
+			"manifest"		"9157242260838813163"
+			"size"		"241471023"
+		}
+		"1640390"
+		{
+			"manifest"		"3526791965663128869"
+			"size"		"619020539"
+			"dlcappid"		"1640390"
+		}
+		"1640381"
+		{
+			"manifest"		"8442389406048445098"
+			"size"		"38248949"
+			"dlcappid"		"1640381"
+		}
+		"1640382"
+		{
+			"manifest"		"6012813432517760844"
+			"size"		"86408166"
+			"dlcappid"		"1640382"
+		}
+	}
+	"InstallScripts"
+	{
+		"1135302"		"install.vdf"
+	}
+	"SharedDepots"
+	{
+		"228988"		"228980"
+		"228990"		"228980"
+		"229002"		"228980"
+		"229003"		"228980"
+		"229005"		"228980"
+		"229006"		"228980"
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+	"MountedConfig"
+	{
+		"language"		"english"
+	}
+}

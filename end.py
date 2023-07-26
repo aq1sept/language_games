@@ -1,4 +1,3 @@
-# VERSION: 3
 import os
 import re
 import glob
@@ -24,14 +23,19 @@ def extract_user_language(filename):
         print("UserConfig block not found in the file.")
         return None
 
+def write_user_language(user_language):
+    with open("user_language.cfg", 'w', encoding='utf-8', newline='\n') as output_file:
+        output_file.write(user_language)
+        print(f"User language '{user_language}' has been written to user_language.cfg.")
+
 steamapps_path = r".\steamapps_test"
-#steamapps_path = r"C:\Program Files (x86)\Steam\steamapps"
+# steamapps_path = r"C:\Program Files (x86)\Steam\steamapps"
 blacklist_file = "blacklist_appmanifest.cfg"
 
-blacklist = []
+blacklist = set()
 if os.path.exists(blacklist_file):
     with open(blacklist_file, 'r', encoding='utf-8', newline='\n') as blacklist_file:
-        blacklist = [line.strip() for line in blacklist_file]
+        blacklist = {line.strip() for line in blacklist_file}
 
 english_found = False
 
@@ -43,16 +47,12 @@ for filename in glob.glob(os.path.join(steamapps_path, "appmanifest_*.acf")):
     user_language = extract_user_language(filename)
 
     if user_language and user_language.lower() != "english":
-        with open("user_language.cfg", 'w', encoding='utf-8', newline='\n') as output_file:
-            output_file.write(user_language)
-            print(f"User language '{user_language}' has been written to user_language.cfg.")
-            english_found = False
+        write_user_language(user_language)
+        english_found = False
         break
     else:
         print(f"File: {filename}, User language is 'english', ignoring the writing to user_language.cfg.")
         english_found = True
 
 if english_found:
-    with open("user_language.cfg", 'w', encoding='utf-8', newline='\n') as output_file:
-        output_file.write("english")
-        print("User language 'english' has been written to user_language.cfg.")
+    write_user_language("english")

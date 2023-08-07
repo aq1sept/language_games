@@ -28,8 +28,8 @@ def write_user_language(user_language):
         output_file.write(user_language)
         print(f"User language '{user_language}' has been written to user_language.cfg.")
 
-steamapps_path = r".\steamapps_test"
-# steamapps_path = r"C:\Program Files (x86)\Steam\steamapps"
+#steamapps_path = r".\steamapps_test"
+steamapps_path = r"C:\Program Files (x86)\Steam\steamapps"
 blacklist_file = "blacklist_appmanifest.cfg"
 
 blacklist = set()

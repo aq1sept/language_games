@@ -1,10 +1,16 @@
 import os
 import re
+import logging
+import datetime
 
 #folder_path = r".\steamapps_test"
 folder_path = r"C:\Program Files (x86)\Steam\steamapps"
 config_file_path = "user_language.cfg"
 blacklist_file_path = "blacklist_appmanifest.cfg"
+log_file_path = "start.log"
+
+logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger()
 
 def read_file_lines(file_path):
     with open(file_path, "r", encoding="utf-8", newline='\n') as file:
@@ -13,6 +19,7 @@ def read_file_lines(file_path):
 if not os.path.isfile(config_file_path):
     with open(config_file_path, "w", encoding="utf-8", newline='\n') as config_file:
         config_file.write("english")
+    logger.info(f"Created {config_file_path} with default language 'english'.")
 
 config_text = read_file_lines(config_file_path)[0]
 
@@ -40,6 +47,6 @@ for filename in os.listdir(folder_path):
                 manifest_file.write(manifest_text)
                 manifest_file.truncate()
 
-            print(f"File {filename} updated.")
+            logger.info(f"Updated language in file {filename}.")
         except FileNotFoundError:
-            print(f"File {filename} not found. Skipping.")
+            logger.warning(f"File {filename} not found. Skipping.")

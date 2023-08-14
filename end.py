@@ -1,8 +1,12 @@
 import os
 import re
 import glob
+import logging
+
+logging.basicConfig(filename='end.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def extract_user_language(filename):
+    logging.info(f"Extracting user language from file: {filename}")
     with open(filename, 'r', encoding='utf-8', newline='\n') as file:
         data = file.read()
 
@@ -15,18 +19,19 @@ def extract_user_language(filename):
 
         if language_match:
             user_language = language_match.group(1)
+            logging.info(f"User language '{user_language}' extracted from UserConfig block.")
             return user_language
         else:
-            print("Language not found in UserConfig block.")
+            logging.warning("Language not found in UserConfig block.")
             return None
     else:
-        print("UserConfig block not found in the file.")
+        logging.warning("UserConfig block not found in the file.")
         return None
 
 def write_user_language(user_language):
     with open("user_language.cfg", 'w', encoding='utf-8', newline='\n') as output_file:
         output_file.write(user_language)
-        print(f"User language '{user_language}' has been written to user_language.cfg.")
+        logging.info(f"User language '{user_language}' has been written to user_language.cfg.")
 
 #steamapps_path = r".\steamapps_test"
 steamapps_path = r"C:\Program Files (x86)\Steam\steamapps"
@@ -41,7 +46,7 @@ english_found = False
 
 for filename in glob.glob(os.path.join(steamapps_path, "appmanifest_*.acf")):
     if os.path.basename(filename) in blacklist:
-        print(f"File: {filename} is in the blacklist, skipping.")
+        logging.info(f"File: {filename} is in the blacklist, skipping.")
         continue
 
     user_language = extract_user_language(filename)
@@ -51,7 +56,7 @@ for filename in glob.glob(os.path.join(steamapps_path, "appmanifest_*.acf")):
         english_found = False
         break
     else:
-        print(f"File: {filename}, User language is 'english', ignoring the writing to user_language.cfg.")
+        logging.info(f"File: {filename}, User language is 'english', ignoring the writing to user_language.cfg.")
         english_found = True
 
 if english_found:

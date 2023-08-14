@@ -6,7 +6,7 @@ import logging
 #steamapps_path = r".\steamapps_test"
 steamapps_path = r"C:\Program Files (x86)\Steam\steamapps"
 blacklist_file = "blacklist_appmanifest.cfg"
-log_folder_path = r"C:\Users\Vadym Petrosyan\Desktop\git\language_games"
+log_folder_path = r"C:\Users\user\boosteroid-experience\logs\language_games_logs"
 
 if not os.path.exists(log_folder_path):
     os.makedirs(log_folder_path)

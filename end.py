@@ -3,7 +3,12 @@ import re
 import glob
 import logging
 
-logging.basicConfig(filename='end.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+#steamapps_path = r".\steamapps_test"
+steamapps_path = r"C:\Program Files (x86)\Steam\steamapps"
+blacklist_file = "blacklist_appmanifest.cfg"
+log_file_path = "end.log"
+
+logging.basicConfig(filename=log_file_path, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def extract_user_language(filename):
     logging.info(f"Extracting user language from file: {filename}")
@@ -32,10 +37,6 @@ def write_user_language(user_language):
     with open("user_language.cfg", 'w', encoding='utf-8', newline='\n') as output_file:
         output_file.write(user_language)
         logging.info(f"User language '{user_language}' has been written to user_language.cfg.")
-
-#steamapps_path = r".\steamapps_test"
-steamapps_path = r"C:\Program Files (x86)\Steam\steamapps"
-blacklist_file = "blacklist_appmanifest.cfg"
 
 blacklist = set()
 if os.path.exists(blacklist_file):

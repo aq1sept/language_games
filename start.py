@@ -7,7 +7,12 @@ import datetime
 folder_path = r"C:\Program Files (x86)\Steam\steamapps"
 config_file_path = "user_language.cfg"
 blacklist_file_path = "blacklist_appmanifest.cfg"
-log_file_path = "start.log"
+log_folder_path = r"C:\Users\Vadym Petrosyan\Desktop\git\language_games"
+
+if not os.path.exists(log_folder_path):
+    os.makedirs(log_folder_path)
+
+log_file_path = os.path.join(log_folder_path, "start.log")
 
 logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()

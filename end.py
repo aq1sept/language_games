@@ -6,7 +6,12 @@ import logging
 #steamapps_path = r".\steamapps_test"
 steamapps_path = r"C:\Program Files (x86)\Steam\steamapps"
 blacklist_file = "blacklist_appmanifest.cfg"
-log_file_path = "end.log"
+log_folder_path = r"C:\Users\Vadym Petrosyan\Desktop\git\language_games"
+
+if not os.path.exists(log_folder_path):
+    os.makedirs(log_folder_path)
+
+log_file_path = os.path.join(log_folder_path, "end.log")
 
 logging.basicConfig(filename=log_file_path, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 

@@ -3,8 +3,8 @@ import re
 import logging
 import datetime
 
-#folder_path = r".\steamapps_test"
-folder_path = r"C:\Program Files (x86)\Steam\steamapps"
+folder_path = r".\steamapps_test"
+#folder_path = r"C:\Program Files (x86)\Steam\steamapps"
 config_file_path = "user_language.cfg"
 blacklist_file_path = "blacklist_appmanifest.cfg"
 log_folder_path = r"C:\Users\user\boosteroid-experience\logs\language_games_logs"

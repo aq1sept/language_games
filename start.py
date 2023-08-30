@@ -3,11 +3,30 @@ import re
 import logging
 import datetime
 
-folder_path = r".\steamapps_test"
+folder_path = r"C:\Program Files (x86)\Steam\steamapps"
 #folder_path = r"C:\Program Files (x86)\Steam\steamapps"
 config_file_path = "user_language.cfg"
 blacklist_file_path = "blacklist_appmanifest.cfg"
 log_folder_path = r"C:\Users\user\boosteroid-experience\logs\language_games_logs"
+
+file_list = [f for f in os.listdir(folder_path) if f.startswith("appmanifest_") and f.endswith(".acf")]
+
+pattern = re.compile(r'("LastOwner"\s+")\d+"')
+
+for file_name in file_list:
+    file_path = os.path.join(folder_path, file_name)
+    
+    try:
+        with open(file_path, 'r') as file:
+            content = file.read()
+    except FileNotFoundError:
+        print(f"Файл не найден: {file_path}")
+        continue
+
+    new_content = pattern.sub(r'\1"', content)
+
+    with open(file_path, 'w') as file:
+        file.write(new_content)
 
 if not os.path.exists(log_folder_path):
     os.makedirs(log_folder_path)

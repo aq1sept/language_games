@@ -2,7 +2,7 @@ import re
 import os
 
 # Путь к директории, содержащей файлы appmanifest_*.acf
-directory_path = "путь_к_директории"
+directory_path = r".\steamapps_test"
 
 # Получаем список файлов с именами, соответствующими шаблону appmanifest_*.acf
 file_list = [f for f in os.listdir(directory_path) if f.startswith("appmanifest_") and f.endswith(".acf")]

@@ -35,6 +35,8 @@ log_file_path = os.path.join(log_folder_path, "start.log")
 logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
 
+logger.info(f"Start.exe is launched. Version: 1.00")
+
 def read_file_lines(file_path):
     with open(file_path, "r", encoding="utf-8", newline='\n') as file:
         return [line.strip() for line in file]

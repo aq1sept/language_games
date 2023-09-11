@@ -57,7 +57,11 @@ for filename in glob.glob(os.path.join(steamapps_path, "appmanifest_*.acf")):
         logging.info(f"File: {filename} is in the blacklist, skipping.")
         continue
 
-    user_language = extract_user_language(filename)
+    try:
+        user_language = extract_user_language(filename)
+    except FileNotFoundError:
+        logging.warning(f"File not found: {filename}. Skipping.")
+        continue
 
     if user_language and user_language.lower() != "english":
         write_user_language(user_language)

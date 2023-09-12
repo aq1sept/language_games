@@ -19,7 +19,7 @@ for file_name in file_list:
         with open(file_path, 'r') as file:
             content = file.read()
     except FileNotFoundError:
-        print(f"Файл не найден: {file_path}")
+        print(f"File not found: {file_path}")
         continue
 
     new_content = pattern.sub(r'\1"', content)

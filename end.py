@@ -5,6 +5,7 @@ import logging
 
 #steamapps_path = r".\steamapps_test"
 steamapps_path = r"C:\Program Files (x86)\Steam\steamapps"
+config_file_path = r"C:\Program Files (x86)\Steam\user_language.cfg"
 blacklist_file = "blacklist_appmanifest.cfg"
 log_folder_path = r"C:\Users\user\boosteroid-experience\logs\language_games_logs"
 
@@ -41,7 +42,7 @@ def extract_user_language(filename):
         return None
 
 def write_user_language(user_language):
-    with open("user_language.cfg", 'w', encoding='utf-8', newline='\n') as output_file:
+    with open(config_file_path, 'w', encoding='utf-8', newline='\n') as output_file:
         output_file.write(user_language)
         logging.info(f"User language '{user_language}' has been written to user_language.cfg.")
 

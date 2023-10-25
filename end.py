@@ -16,7 +16,7 @@ log_file_path = os.path.join(log_folder_path, "end.log")
 
 logging.basicConfig(filename=log_file_path, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
-logging.info(f"End.exe is launched. Version: 1.00")
+logging.info(f"End.exe is launched. Version: 1.01")
 
 def extract_user_language(filename):
     logging.info(f"Extracting user language from file: {filename}")

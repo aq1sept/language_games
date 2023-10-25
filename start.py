@@ -20,7 +20,7 @@ logger.info(f"Start.exe is launched. Version: 1.00")
 
 file_list = [f for f in os.listdir(folder_path) if f.startswith("appmanifest_") and f.endswith(".acf")]
 
-pattern = re.compile(r'("LastOwner"\s+")\d+"')
+#pattern = re.compile(r'("LastOwner"\s+")\d+"')
 
 for file_name in file_list:
     file_path = os.path.join(folder_path, file_name)
@@ -35,13 +35,13 @@ for file_name in file_list:
         logging.error(f"Error reading file {file_path}: {e}")
         continue
 
-    new_content = pattern.sub(r'\1"', content)
+    #new_content = pattern.sub(r'\1"', content)
 
-    try:
-        with open(file_path, 'w') as file:
-            file.write(new_content)
-    except Exception as e:
-        logging.error(f"Error writing to file {file_path}: {e}")
+    #try:
+    #    with open(file_path, 'w') as file:
+    #        file.write(new_content)
+    #except Exception as e:
+    #    logging.error(f"Error writing to file {file_path}: {e}")
 
 def read_file_lines(file_path):
     with open(file_path, "r", encoding="utf-8", newline='\n') as file:

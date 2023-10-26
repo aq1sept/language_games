@@ -16,7 +16,7 @@ log_file_path = os.path.join(log_folder_path, "start.log")
 logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
 
-logger.info(f"Start.exe is launched. Version: 1.02")
+logger.info(f"Start.exe is launched. Version: 1.3")
 
 file_list = [f for f in os.listdir(folder_path) if f.startswith("appmanifest_") and f.endswith(".acf")]
 

@@ -1,7 +1,6 @@
 import os
 import re
 import logging
-import datetime
 
 folder_path = r"C:\Program Files (x86)\Steam\steamapps"
 config_file_path = r"C:\Program Files (x86)\Steam\user_language.cfg"

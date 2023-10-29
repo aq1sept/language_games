@@ -42,7 +42,7 @@ def extract_user_language(filename):
         return None
 
 def write_user_language(user_language):
-    with open(config_file_path, 'w', encoding='utf-8', newline='\n') as output_file:
+    with open(config_file_path, 'w+', encoding='utf-8', newline='\n') as output_file:
         output_file.write(user_language)
         logging.info(f"User language '{user_language}' has been written to user_language.cfg.")
 
